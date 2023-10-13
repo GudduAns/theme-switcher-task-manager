@@ -34,6 +34,12 @@ const AddToReducer = (state = initialState, action) => {
             return (
                 {
                     ...state,
+                }
+            )
+        case "COMPLETED_SELECTED_ITEM":
+            return (
+                {
+                    ...state,
                     // todosList: [...state.todosList]
                 }
             )

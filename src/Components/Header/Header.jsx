@@ -21,7 +21,8 @@ const Header = () => {
                 </div>
                 <div className="switch-btn-wrap">
                     <SwitchButton
-                        onChange={(e) => handleTheme(e)}
+                        onChange={() => handleTheme()}
+                        checked={darkTheme}
                     />
                 </div>
             </div>

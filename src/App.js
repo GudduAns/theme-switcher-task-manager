@@ -16,6 +16,7 @@ function App() {
     );
     root?.style.setProperty("--text-color", darkTheme ? "#fff" : "#262833");
   }, [darkTheme]);
+
   return (
     <>
       <LandingPage />

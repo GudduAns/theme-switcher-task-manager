@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './style.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteSelectedITem, selectUpdateItem } from '../../../Store/Actions/TodoActions'
+import { CompletedSelectedITem, deleteSelectedITem, selectUpdateItem } from '../../../Store/Actions/TodoActions'
 const TodoItem = ({ data }) => {
     const { addTodos } = useSelector((state) => {
         return (
@@ -12,7 +12,7 @@ const TodoItem = ({ data }) => {
     })
     const dispatch = useDispatch();
     const [activePop, setActivePop] = useState(false)
-    const [complete, setComplete] = useState(data?.is_complete ? data?.is_complete : true)
+    const [complete, setComplete] = useState(data?.is_completed ? data?.is_completed : false)
     const openPop = (e) => {
         setActivePop(!activePop)
     }
@@ -28,15 +28,15 @@ const TodoItem = ({ data }) => {
     }
 
     const completeHandle = (id) => {
-        setComplete(!complete)
         const all_IDs = addTodos?.todosList.map((e) => e._id)
         const getIndex = all_IDs.indexOf(id)
         const getItem = addTodos.todosList[getIndex];
-        const setItem = getItem.is_complete = complete;
-
-        console.log(addTodos, 'addTodos')
+        getItem.is_completed = complete;
+        console.log(getItem, 'getItemgetItem')
+        dispatch(CompletedSelectedITem())
+        setComplete((e) => !e)
     }
-    // console.log(complete, 'addTodos complete')
+    console.log(addTodos, 'addTodos')
 
     return (
         <div className='todo-item-wrapper'>
@@ -46,7 +46,7 @@ const TodoItem = ({ data }) => {
                     <div className="item">
                         <p className="title">
                             {
-                                data?.is_complete ?
+                                complete ?
                                     <del > {data.title}</del>
                                     :
                                     data.title

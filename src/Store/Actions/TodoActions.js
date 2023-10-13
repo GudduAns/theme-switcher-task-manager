@@ -27,9 +27,10 @@ const deleteSelectedITem = () => {
         type: "DELETE_SELECTED_ITEM",
     }
 }
-const CompletedSelectedITem = () => {
+const CompletedSelectedITem = (payload) => {
     return {
         type: "COMPLETED_SELECTED_ITEM",
+        payload: payload
     }
 }
 
@@ -39,5 +40,6 @@ export {
     selectUpdateItem,
     resetUpdateItem,
     updateSelectedITem,
-    deleteSelectedITem
+    deleteSelectedITem,
+    CompletedSelectedITem
 }
